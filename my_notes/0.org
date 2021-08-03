@@ -1,1 +1,29 @@
-https://stanford-lambda.gitlab.io/notes/Folds_Scans_Laziness.html
+https://stanford-lambda.gitlab.io/notes/Folds_Scans_Laziness.html  \\
+https://apfelmus.nfshost.com/articles/quicksearch.html
+
+
+* Lazy evaluation
+
+Haskell is a lazy language. This means that "expressions are not evaluated when 
+they are bound to variables, but their evaluation is deferred until their results 
+are needed by other computatations."
+
+Consider as an example the following implementation of quicksort.
+
+#+BEGIN_SRC haskell
+quicksort [] = []
+quicksort (p:xs) = (quicksort lesser) ++ [p] ++ (quicksort greater)
+  where
+    lesser = filter (< p) xs
+    greater = filter (>= p) xs
+#+END_SRC
+
+If we evaluate ~head $ quicksort [5, 3, 6, 1, 7]~ in ghci, evaluation will proceed in reverse order compared to any non-lazy language. A language like Python would first sort the list, then extract the head, and finally print the result. In Haskell, ghci would first attempt to print the first character of output. To do so, it must evaluate the head of the sorted list, and will therefore generate the first element by completing only those operations necessary to sort out the first element. First it will split the list into the following.
+
+#+BEGIN_SRC haskell
+[3, 1] ++ [5] ++ [6, 7]
+#+END_SRC
+
+Then, since it only needs the first element it will just sort ~[3, 1]~ to extract 1 as the result, without ever concatenating or sorting the other sub-lists.
+
+Thus, if we run take k $ quicksort xs, thanks to lazy evaluation only the first k elements will be sorted. Indeed, this will take *O(n+klogk)* time, whereas a non-lazy quicksort would always take *O(nlogn)* time.

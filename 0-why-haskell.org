@@ -25,7 +25,7 @@ always return the same results. This is a core idea behind
 functional programming.
 
 Along with not modifying data, our Haskell functions usually don't
-talk to the external world; we call these functions /pure/. We
+talk to the external world; we call these functions /*pure*/. We
 make a strong distinction between pure code and the parts of our
 programs that read or write files, communicate over network
 connections, or make robot arms move. This makes it easier to

@@ -6,14 +6,9 @@ Haskell is a deep language, and we think that learning it is a
 hugely rewarding experience. We will focus on three elements as we
 explain why. 
 
-- The first is *novelty*: we invite you to think about
-programming from a different and valuable perspective.  
-- The second
-is *power*: we'll show you how to create software that is short,
-fast, and safe.  
-- Lastly, we offer you a lot of *fun*: the pleasure
-of applying beautiful programming techniques to solve real
-problems.
+- The first is *novelty*: we invite you to think about programming from a different and valuable perspective.  
+- The second is *power*: we'll show you how to create software that is short, fast, and safe.  
+- Lastly, we offer you a lot of *fun*: the pleasure of applying beautiful programming techniques to solve real problems.
 
 *** Novelty
 
